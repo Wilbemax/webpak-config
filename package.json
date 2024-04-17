@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack --env mode=development",
+    "start": "webpack server --env mode=development",
     "build:prod": "webpack --env mode=production"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.8.3",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.11",
     "@types/webpack": "^5.28.3",
     "@types/webpack-dev-server": "^4.7.2",
     "html-webpack-plugin": "^5.5.3",
@@ -21,5 +23,9 @@
     "typescript": "^5.2.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

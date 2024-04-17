@@ -1,21 +1,20 @@
-// const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const webpack = require('webpack')
-
+import  HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import webpack from 'webpack'
+import  webpack  from 'webpack'
+import type { Configuration as DevServerConfiguration } from 'webpack-dev-server'
 
 type Mode = 'production' | 'development'
 
 interface EnvProps { 
-	mode: Mode
+	mode: Mode, 
+	port: number
 }
 
  export default  (env: EnvProps)  => {
+	const isDev = env.mode ==='development'
 	const config: webpack.Configuration = {
 			mode: env.mode ?? 'development',
-			entry: path.resolve(__dirname, 'src', 'index.ts'),
+			entry: path.resolve(__dirname, 'src', 'index.tsx'),
 			output: {
 				path: path.resolve(__dirname, 'build'),
 				filename: '[name].[contenthash].js',
@@ -23,8 +22,8 @@ interface EnvProps {
 			},
 			plugins: [
 				new HtmlWebpackPlugin( {template: path.resolve(__dirname, 'public', 'index.html')}),
-				new webpack.ProgressPlugin()
-			],
+				isDev && new webpack.ProgressPlugin()
+			].filter(Boolean),
 			module: {
 				rules: [
 				  {
@@ -36,7 +35,12 @@ interface EnvProps {
 			  },
 			resolve: {
 			  extensions: ['.tsx', '.ts', '.js'],
-			}
+			},
+			devtool: isDev ? 'inline-source-map' : false,
+			devServer : isDev ? {
+				port: env.port ?? 3000,
+				open: true
+			} : undefined
 		
 	}
 	return config;
