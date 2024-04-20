@@ -1,0 +1,15 @@
+button {
+
+    background: red;
+
+    span {
+        transition: all .3s ease-in-out;
+    }
+
+    span:hover {
+        font-size: 48px;
+        h1{
+            font-size: 50px;
+        }
+    }
+}
