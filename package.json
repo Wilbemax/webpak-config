@@ -30,7 +30,11 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "@types/webpack-bundle-analyzer": "^4.7.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
+    "webpack-bundle-analyzer": "^4.9.1"
   }
 }
