@@ -15,13 +15,15 @@ export default (env: EnvProps) => {
 		output: path.resolve(__dirname, 'build'),
 		entry: path.resolve(__dirname, 'src', 'index.tsx'),
 		html: path.resolve(__dirname, 'public', 'index.html'),
-		src: path.resolve(__dirname, 'src' )
+		src: path.resolve(__dirname, 'src' ),
+		public: path.resolve(__dirname, 'public'),
+
 	}
 	
 	const config: webpack.Configuration = buildWeback({
 		port: env.port ?? 3000,
 		mode: env.mode ?? 'development',
-		path: paths,
+		paths: paths,
 		analyzer: env.analyzer
 	})
 	return config;

@@ -11,9 +11,9 @@ export function buildWeback(options: BuildOptions): webpack.Configuration {
 	const isDev = options.mode === 'development';
 	return {
 		mode: options.mode ?? 'development',
-		entry: options.path.entry,
+		entry: options.paths.entry,
 		output: {
-			path: options.path.output,
+			path: options.paths.output,
 			filename: '[name].[contenthash].js',
 			clean: true,
 		},
