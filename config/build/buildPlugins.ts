@@ -4,6 +4,8 @@ import { Configuration } from 'webpack';
 import webpack from 'webpack';
 import { BuildOptions } from './types/types';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 export function buildPlugins({
 	mode,
@@ -17,10 +19,14 @@ export function buildPlugins({
 		new HtmlWebpackPlugin({
 			template: path.html,
 		}),
+		//Выносим загрузу на отдельный процесс
+		new ForkTsCheckerWebpackPlugin(),
+		
 	];
 
 	if (isDev) {
 		plugins.push(new webpack.ProgressPlugin());
+		plugins.push(new ReactRefreshPlugin())
 	}
 
 	if (isProd) {

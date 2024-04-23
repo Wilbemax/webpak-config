@@ -12,7 +12,7 @@ export function App() {
             <br />
             <Link to={'/About'} >About</Link>
             <h1 className={classes.value}>{count}</h1>
-            <button className={classes.button} onClick={incriment}><span>increment</span></button>
+            <button className={classes.button} onClick={incriment}><span>incrdsffsdement</span></button>
             <Outlet /> 
         </div>
     )
