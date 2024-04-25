@@ -22,7 +22,7 @@ export function buildWeback(options: BuildOptions): webpack.Configuration {
 			rules: buildLoaders(options),
 		},
 		resolve: builResolver(options),
-		devtool: isDev ? 'inline-source-map' : false,
+		devtool: isDev ? 'eval-cheap-module-source-map' : 'source-map',
 		devServer: isDev ? buildDevServer(options) : undefined,
 	};
 }

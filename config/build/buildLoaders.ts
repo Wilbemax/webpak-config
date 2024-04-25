@@ -1,9 +1,10 @@
+import { buildBabelLoader } from './babel/buildBabelLoader';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { ModuleOptions } from 'webpack';
 import { BuildOptions } from './types/types';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
-export function buildLoaders(option: BuildOptions): ModuleOptions['rules'] {
-	const isDev = option.mode === 'development';
+export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
+	const isDev = options.mode === 'development';
 
 	const assetLoader = {
 		test: /\.(png|jpg|jpeg|gif)$/i,
@@ -59,34 +60,7 @@ export function buildLoaders(option: BuildOptions): ModuleOptions['rules'] {
 	// 	exclude: /node_modules/,
 	// };
 
-	const bableLoader = {
-		test: /\.tsx?$/,
-		exclude: /node_modules/,
-		use: {
-			loader: 'babel-loader',
-			options: {
-				presets: [
-					[
-						[
-							'@babel/preset-env',
-							{
-								targets: {
-									node: '10',
-								},
-							},
-						],
-						'@babel/preset-typescript',
-						[
-							'@babel/preset-react',
-							{
-								runtime: 'automatic',
-							},
-						],
-					],
-				],
-			},
-		},
-	};
+	
 
 	// const tsLoader = {
 	// 	test: /\.tsx?$/,
@@ -103,6 +77,9 @@ export function buildLoaders(option: BuildOptions): ModuleOptions['rules'] {
 	// 	],
 	// 	exclude: /node_modules/,
 	// };
+
+
+	const bableLoader = buildBabelLoader(options)
 
 	return [
 		svgLoader,

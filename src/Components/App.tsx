@@ -7,7 +7,7 @@ export function App() {
     const incriment = () => setCount(prev => prev + 1)
 
     return(
-        <div>
+        <div data-testid={'apptestid'}>
             <Link to={'/shop'} >Shop</Link>
             <br />
             <Link to={'/About'} >About</Link>
