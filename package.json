@@ -6,7 +6,8 @@
   "scripts": {
     "build:dev": "webpack --env mode=development",
     "dev": "webpack server --env mode=development",
-    "build:prod": "webpack --env mode=production"
+    "build:prod": "webpack --env mode=production",
+    "typecheck": "tsc"
   },
   "keywords": [],
   "author": "",
